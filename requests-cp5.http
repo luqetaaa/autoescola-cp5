@@ -1,0 +1,26 @@
+### Login como administrador
+POST http://localhost:8085/login
+Content-Type: application/json
+
+{
+  "login": "admin",
+  "senha": "admin123"
+}
+
+> {% client.global.set("token", response.body.tokenJWT); %}
+
+### Consultar ViaCEP (API externa)
+GET http://localhost:8085/enderecos/cep/01001000
+Authorization: Bearer {{token}}
+
+### Listar alunos
+GET http://localhost:8085/alunos
+Authorization: Bearer {{token}}
+
+### Listar instrutores
+GET http://localhost:8085/instrutores
+Authorization: Bearer {{token}}
+
+### Listar usuários - somente ADMIN
+GET http://localhost:8085/usuarios
+Authorization: Bearer {{token}}
